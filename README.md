@@ -15,6 +15,10 @@ The rebuilt campus follows the physical model: towers at one end, the crescent a
 
 Night audio shuts down completely on victory, defeat, quit or exit. Pause, mute and leaving the game window suspend its audio engine, including during demos. Continue or Retry restores sound only for active gameplay. See `artifacts/audio-shutdown-evidence.md` for the focused checks and rollout status. Refresh an already-open game tab after an update to load the latest version.
 
+## Night bilingual instructions (AI-assisted update)
+
+Night-mode gameplay instructions, objectives, interaction hints and key warnings retain English alongside Chinese. Translation is limited to the night presentation layer; daytime text, gameplay rules and attribution are unchanged. This is not a complete translation of decorative story text or map artwork. Unknown/new text falls back to English. After changing source, stop the local server, run `npm run build`, restart with `npm start`, and refresh the browser. Run `node --test night/tests/bilingual.test.mjs` for translation checks. Browser layout and actual interactions still need manual verification, especially on small screens.
+
 ## Run locally
 
 For a fresh checkout, install Node 22.12 or newer, open a terminal in the repository root, then run:

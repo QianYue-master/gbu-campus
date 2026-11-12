@@ -73,3 +73,24 @@
 
 /* A route diagram must remain readable over objectives and moving facades. */
 .map-panel{background:rgba(10,29,35,.98)}
+
+/* Night bilingual instructions need wrapping and scrollable help on small screens. */
+body[data-campus-mode="night"] .pause-controls>div{align-items:flex-start;line-height:1.6}
+body[data-campus-mode="night"] .pause-controls span{min-width:0;overflow-wrap:anywhere}
+body[data-campus-mode="night"] .modal-screen{overflow-y:auto;align-items:flex-start}
+body[data-campus-mode="night"] .modal-copy{margin-block:auto;padding-block:24px}
+body[data-campus-mode="night"] .quick-controls{flex-wrap:wrap;line-height:1.6}
+body[data-campus-mode="night"] .focus-prompt p,
+body[data-campus-mode="night"] .event-message{line-height:1.65;overflow-wrap:anywhere}
+body[data-campus-mode="night"] .meter-row>span{width:100px;flex-shrink:0}
+body[data-campus-mode="night"] .noise-row{flex-wrap:wrap;line-height:1.5}
+body[data-campus-mode="night"] .memory-list li,
+body[data-campus-mode="night"] .bell-status{white-space:normal;line-height:1.5}
+body[data-campus-mode="night"] .bell-status{max-width:260px;text-align:right}
+body[data-campus-mode="night"] .touch-actions button{font-size:10px;white-space:normal}
+@media(max-width:520px){
+  body[data-campus-mode="night"] .meter-row>span{width:82px}
+  body[data-campus-mode="night"] .objective-block h2{font-size:18px;line-height:1.4}
+  body[data-campus-mode="night"] .title-screen{overflow-y:auto;align-items:flex-start}
+  body[data-campus-mode="night"] .title-footer{position:static;margin-top:24px}
+}

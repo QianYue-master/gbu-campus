@@ -1,4 +1,5 @@
 import './style.css';
+import {bilingual, translateNight} from './bilingual.js';
 import { CAMPUS, MEMORY_TITLES } from '../../shared/campus-layout.js';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, Number(value) || 0));
@@ -31,6 +32,7 @@ function drawCampusMap() {
 
 export function createUI(actions) {
   drawCampusMap();
+  translateNight(document);
   const ids = ['ui','title-screen','start-button','demo-button','loading','loading-label','loading-progress','hud','objective','hint','navigation-label','track-status','track-progress','track-clock','memory-count','memory-list','safety-label','health-fill','health-value','bite-effect','chase-label','kick-label','composure-fill','composure-value','battery-fill','battery-value','torch-label','noise-label','noise-bars','bell-label','reticle','event-message','focus-prompt','focus-title','focus-instruction','ritual-progress','note-controls','demo-strip','demo-caption','map-panel','map-player','map-ghost','map-target','map-button','pause-screen','end-screen','end-eyebrow','end-title','end-description','end-memories','end-time','retry-button','sound-button','quality-label','touch-controls','touch-torch','touch-interact','touch-kick','touch-sprint','scene'];
   const el = Object.fromEntries(ids.map(id => [id, document.getElementById(id)]));
   const cache = new WeakMap();
@@ -46,7 +48,7 @@ export function createUI(actions) {
   for(const [id,node] of Object.entries(memoryNodes)) text(node.querySelector('span'),MEMORY_TITLES[id]||id);
 
   function text(node, value) {
-    value = String(value ?? '');
+    value = bilingual(value);
     if (cache.get(node) !== value) { node.textContent = value; cache.set(node, value); }
   }
   function show(node, visible) {
@@ -55,7 +57,7 @@ export function createUI(actions) {
     if (node.getAttribute('aria-hidden') !== aria) node.setAttribute('aria-hidden', aria);
   }
   function attr(node, name, value) {
-    value = String(value);
+    value = name === 'aria-label' || name === 'title' ? bilingual(value) : String(value);
     if (node.getAttribute(name) !== value) node.setAttribute(name, value);
   }
   function width(node, value) {
